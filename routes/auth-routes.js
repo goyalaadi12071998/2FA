@@ -76,6 +76,8 @@ router.post('/api/users/verify',async (req, res) => {
             console.log('User Verification Complete');
             await OTP.deleteOne({verifyingEmail : email});
             res.send({existingUser});
+        }else{
+            res.send('Otp verification failed');
         }
     }catch(err) {
         throw new Error(err);
